@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AuthModule } from './auth/auth.module';
 import { DepositsModule } from './deposits/deposits.module';
-import { WalletModule } from './wallet/wallet.module';
 import { CreditsModule } from './credits/credits.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -22,6 +21,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       autoLoadEntities:true,
       synchronize: true
     }),
-    AuthModule, DepositsModule, WalletModule, CreditsModule],
+    AuthModule, DepositsModule, CreditsModule],
 })
 export class AppModule {}
