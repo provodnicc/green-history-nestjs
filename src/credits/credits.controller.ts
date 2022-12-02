@@ -28,7 +28,6 @@ export class CreditsController {
   async findAll(
     @Req()
     req: Request,
-
   ) {
     const user_id = Number(req.user)
 

@@ -14,14 +14,14 @@ export class DepositsService {
   ){}
 
   async create(createDepositDto: CreateDepositDto, user_id: number) {
+    const dep = this.depositRepository.create()
     
-    createDepositDto.term = DepositTerm[createDepositDto.term]
-    console.log()
+    dep.amount = createDepositDto.amount 
+    dep.createdAt = new Date()
+    dep.term = DepositTerm[createDepositDto.term]
+    dep.user_id = user_id
 
-    // const deposit = this.depositRepository.create()
-    // deposit.user_id = user_id
-
-    return await this.depositRepository.save({...createDepositDto, user_id: user_id})
+    return await this.depositRepository.save(dep)
   }
 
   async findAll(user_id: number) {

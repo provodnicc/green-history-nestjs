@@ -19,6 +19,6 @@ export class Credit {
     @Column()
     user_id: number
 
-    @Column({default: new Date()})
+    @Column()
     createdAt: Date
 }

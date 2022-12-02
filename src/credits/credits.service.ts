@@ -15,6 +15,7 @@ export class CreditsService {
   async create( createCreditDto: CreateCreditDto, user_id:number,) {
     const credit = this.creditRepository.create(createCreditDto)
     credit.user_id = user_id
+    credit.createdAt = new Date()
     
     return await this.creditRepository.save(credit)
   }
