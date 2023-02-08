@@ -18,8 +18,8 @@ jobs:
           docker build -f Dockerfile --pull -t $DOCKER_IMAGE .
           docker push $DOCKER_IMAGE
       
-      # - name: deploy
-      #   uses: satak/webrequest-action@master
-      #   with:
-      #     url: "https://admin.teeeest.xyz/api/webhooks/4389bccf-2f1e-43c2-9136-909b5365e305"
-      #     method: POST
+      - name: deploy
+        uses: satak/webrequest-action@master
+        with:
+          url: "https://admin.teeeest.xyz/api/webhooks/e6017c4c-c38d-4da0-bd7e-f071a54bd331"
+          method: POST
