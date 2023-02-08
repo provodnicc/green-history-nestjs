@@ -1,0 +1,25 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:  
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build and push docker
+        run: |
+          DOCKER_NAME=history-app
+          DOCKER_IMAGE=docker.pkg.github.com/provodnicc/${GITHUB_REPOSITORY##*/}/${DOCKER_NAME}:master
+          docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
+          docker build -f Dockerfile --pull -t $DOCKER_IMAGE .
+          docker push $DOCKER_IMAGE
+      
+      # - name: deploy
+      #   uses: satak/webrequest-action@master
+      #   with:
+      #     url: "https://admin.teeeest.xyz/api/webhooks/4389bccf-2f1e-43c2-9136-909b5365e305"
+      #     method: POST
